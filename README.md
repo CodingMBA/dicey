@@ -3,12 +3,14 @@
 ## Clone Project
 
 ```
+Navigate to folder where you want to install the project
 git clone https://github.com/CodingMBA/dicey.git
 ```
 
 ## Project setup
 
 ```
+cd dicey
 npm install
 ```
 
@@ -24,20 +26,8 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-
-```
-npm run test
-```
-
 ### Lints and fixes files
 
 ```
 npm run lint
-```
-
-### Run your unit tests
-
-```
-npm run test:unit
 ```
