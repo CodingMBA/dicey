@@ -3,7 +3,7 @@
 ## Clone Project
 
 ```
-git clone
+git clone https://github.com/CodingMBA/dicey.git
 ```
 
 ## Project setup
