@@ -2,56 +2,48 @@
   <v-app>
     <v-app-bar app>
       <v-toolbar-title class="headline ml-2">
-        <span class="font-weight-light mr-2">DICEY McDICEFACE</span>
+        <span class="mr-3 blue--text text--darken-4">DICEY McDICEFACE</span>
       </v-toolbar-title>
       <a href="#">
         <v-img :src="require('./assets/dicey.png')" height="50" width="50" />
       </a>
       <v-spacer></v-spacer>
-      <v-btn
-        text
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-      >
-        <span class="mr-2">
-          <v-icon>mdi-github-circle</v-icon>
-        </span>
-      </v-btn>
+      <span>
+        <a href="https://github.com/CodingMBA?tab=repositories">
+          <v-icon class="blue--text text--darken-4">mdi-github-circle</v-icon>
+        </a>
+      </span>
     </v-app-bar>
 
     <v-content>
       <Greeting />
-      <v-container class="grey lighten-5">
-        <v-row class="align-center">
-          <v-col>
+      <v-container class="play-area">
+        <v-layout row justify-space-around align-center>
+          <v-flex md3>
             <Scoreboard :counts="counts" />
-          </v-col>
-          <v-col class="text-center">
-            <div v-if="currentRoll === 1">
-              <v-icon size="6em">mdi-dice-1</v-icon>
+          </v-flex>
+          <v-flex md3>
+            <div class="text-center wrap">
+              <div class="mb-6">
+                <v-btn @click="roll" class="blue darken-4 white--text mr-5"
+                  >Roll</v-btn
+                >
+                <v-btn @click="resetCount" class="warning">Reset</v-btn>
+              </div>
+              <div>
+                <v-icon
+                  v-if="currentRoll"
+                  size="6em"
+                  class="grey--text text--darken-3"
+                  >{{ `mdi-dice-${currentRoll}` }}</v-icon
+                >
+                <div v-else class="red--text text--darken-3">
+                  Click Roll to start.
+                </div>
+              </div>
             </div>
-            <div v-else-if="currentRoll === 2">
-              <v-icon size="6em">mdi-dice-2</v-icon>
-            </div>
-            <div v-else-if="currentRoll === 3">
-              <v-icon size="6em">mdi-dice-3</v-icon>
-            </div>
-            <div v-else-if="currentRoll === 4">
-              <v-icon size="6em">mdi-dice-4</v-icon>
-            </div>
-            <div v-else-if="currentRoll === 5">
-              <v-icon size="6em">mdi-dice-5</v-icon>
-            </div>
-            <div v-else-if="currentRoll === 6">
-              <v-icon size="6em">mdi-dice-6</v-icon>
-            </div>
-            <div v-else>Click the Roll button to start.</div>
-          </v-col>
-          <v-col>
-            <v-btn @click="roll" class="primary mr-5">Roll</v-btn>
-            <v-btn @click="resetCount" class="warning">Reset</v-btn>
-          </v-col>
-        </v-row>
+          </v-flex>
+        </v-layout>
       </v-container>
     </v-content>
   </v-app>
@@ -86,6 +78,7 @@ export default {
       this.counts[this.currentRoll] += 1;
     },
     resetCount() {
+      this.currentRoll = null;
       this.counts = {
         1: 0,
         2: 0,
@@ -98,3 +91,12 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+a {
+  text-decoration: none;
+}
+.play-area {
+  max-width: 700px;
+}
+</style>

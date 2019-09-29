@@ -1,11 +1,15 @@
 <template>
-  <v-layout justify-center>
+  <v-layout class="pl-4">
     <v-simple-table>
       <template v-slot:default>
         <thead>
           <tr>
-            <th class="text-left">Number</th>
-            <th class="text-left">Count</th>
+            <th class="text-left subtitle-2 blue--text text--darken-4">
+              Number
+            </th>
+            <th class="text-left subtitle-2 blue--text text--darken-4">
+              Count
+            </th>
           </tr>
         </thead>
         <tbody>
