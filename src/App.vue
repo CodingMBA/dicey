@@ -16,17 +16,25 @@
     </v-app-bar>
 
     <v-content>
+      <!-- GREETING -->
       <Greeting />
+
+      <!-- PLAY AGAIN DIALOG -->
       <playAgainDialog
         :currentRoll="currentRoll"
         :dialog="dialog"
         @reset="resetCount"
       />
+
+      <!-- MAIN PLAY AREA -->
       <v-container id="play-area">
         <v-layout row justify-space-around align-center>
+          <!-- SCOREBOARD -->
           <v-flex md3>
             <Scoreboard :counts="counts" />
           </v-flex>
+
+          <!-- DICE ROLL AREA -->
           <v-flex md3>
             <div class="text-center wrap">
               <div class="mb-6">
