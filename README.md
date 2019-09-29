@@ -3,7 +3,7 @@
 ## Clone Project
 
 ```
-Navigate to folder where you want to install the project
+-- Navigate to folder where you want to install the project
 git clone https://github.com/CodingMBA/dicey.git
 ```
 
