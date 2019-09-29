@@ -1,6 +1,6 @@
 <template>
   <v-layout class="pl-4">
-    <v-simple-table>
+    <v-simple-table class="text-center">
       <template v-slot:default>
         <thead>
           <tr>

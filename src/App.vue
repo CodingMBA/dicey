@@ -9,7 +9,7 @@
       </a>
       <v-spacer></v-spacer>
       <span>
-        <a href="https://github.com/CodingMBA?tab=repositories">
+        <a href="https://github.com/CodingMBA?tab=repositories" target="_blank">
           <v-icon class="blue--text text--darken-4">mdi-github-circle</v-icon>
         </a>
       </span>
@@ -17,7 +17,27 @@
 
     <v-content>
       <Greeting />
-      <v-container class="play-area">
+
+      <div class="text-center">
+        <v-dialog v-model="dialog" width="500">
+          <v-card>
+            <v-card-title class="headline grey lighten-2" primary-title>{{
+              `#${currentRoll} is the Winner!!`
+            }}</v-card-title>
+            <v-card-text class="subtitle-1 blue--text text--darken-2 mt-4"
+              >Would you like to play again?</v-card-text
+            >
+            <v-divider></v-divider>
+            <v-card-actions>
+              <div class="flex-grow-1"></div>
+              <v-btn color="#0053a4" text @click="resetCount">Yes</v-btn>
+              <v-btn color="#D50000" text @click="dialog = false">No</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
+      </div>
+
+      <v-container id="play-area">
         <v-layout row justify-space-around align-center>
           <v-flex md3>
             <Scoreboard :counts="counts" />
@@ -37,7 +57,10 @@
                   class="grey--text text--darken-3"
                   >{{ `mdi-dice-${currentRoll}` }}</v-icon
                 >
-                <div v-else class="red--text text--darken-3">
+                <div
+                  v-else
+                  class="red--text text--darken-3 font-weight-bold dice-start"
+                >
                   Click Roll to start.
                 </div>
               </div>
@@ -69,13 +92,17 @@ export default {
         4: 0,
         5: 0,
         6: 0
-      }
+      },
+      dialog: false
     };
   },
   methods: {
     roll() {
       this.currentRoll = Math.floor(Math.random() * 6) + 1;
       this.counts[this.currentRoll] += 1;
+      if (this.counts[this.currentRoll] >= 5) {
+        this.dialog = true;
+      }
     },
     resetCount() {
       this.currentRoll = null;
@@ -87,6 +114,7 @@ export default {
         5: 0,
         6: 0
       };
+      this.dialog = false;
     }
   }
 };
@@ -96,7 +124,10 @@ export default {
 a {
   text-decoration: none;
 }
-.play-area {
+#play-area {
   max-width: 700px;
+}
+.dice-start {
+  height: 96px;
 }
 </style>
