@@ -1,7 +1,7 @@
 <template>
   <v-app>
-    <v-app-bar app>
-      <v-toolbar-title class="headline ml-2">
+    <v-app-bar app class="px-4">
+      <v-toolbar-title class="headline">
         <span class="mr-3 blue--text text--darken-4">DICEY McDICEFACE</span>
       </v-toolbar-title>
       <a href="#">
@@ -9,7 +9,7 @@
       </a>
       <v-spacer></v-spacer>
       <span>
-        <a href="https://github.com/CodingMBA?tab=repositories" target="_blank">
+        <a href="https://github.com/CodingMBA/dicey" target="_blank">
           <v-icon class="blue--text text--darken-4">mdi-github-circle</v-icon>
         </a>
       </span>
@@ -21,9 +21,9 @@
       <div class="text-center">
         <v-dialog v-model="dialog" width="500">
           <v-card>
-            <v-card-title class="headline grey lighten-2" primary-title>{{
-              `#${currentRoll} is the Winner!!`
-            }}</v-card-title>
+            <v-card-title class="headline grey lighten-2" primary-title>
+              {{ `#${currentRoll} is the Winner!!` }}
+            </v-card-title>
             <v-card-text class="subtitle-1 blue--text text--darken-2 mt-4"
               >Would you like to play again?</v-card-text
             >
@@ -48,7 +48,9 @@
                 <v-btn @click="roll" class="blue darken-4 white--text mr-5"
                   >Roll</v-btn
                 >
-                <v-btn @click="resetCount" class="warning">Reset</v-btn>
+                <v-btn v-show="currentRoll" @click="resetCount" class="warning"
+                  >Reset</v-btn
+                >
               </div>
               <div>
                 <v-icon
